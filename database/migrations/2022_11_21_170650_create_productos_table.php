@@ -19,7 +19,6 @@ return new class extends Migration
             $table->string('precio');
             $table->string('categoria');
             $table->string('image');
-            
         });
     }
 

@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class ProductoController extends Controller
@@ -24,7 +25,14 @@ class ProductoController extends Controller
         $producto->precio=$request->precio;
         $producto->categoria=$request->categoria;
         $producto->image=$request->image;
-        $producto->save();
+        try {
+            //code...
+            $producto->create();
+            return response() -> json(["message"=>"Parece que si se guardo"]);
+        } catch (\Throwable $th) {
+            return response() -> json(["message"=>"Error inesperado", "Error" => $th]);
+        }
+
     }
 
     
