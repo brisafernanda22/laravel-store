@@ -27,10 +27,10 @@ class ProductoController extends Controller
         $producto->image=$request->image;
         try {
             //code...
-            $producto->create();
-            return response() -> json(["message"=>"Parece que si se guardo"]);
+            $producto->save();
+            return response() -> json(["message"=>"Producto guardado"]);
         } catch (\Throwable $th) {
-            return response() -> json(["message"=>"Error inesperado", "Error" => $th]);
+            return response() -> json(["message"=>"Error inesperado", "Error" => $th], 401);
         }
 
     }
