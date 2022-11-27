@@ -26,7 +26,7 @@ Route::get('/greeting', function () {
 });
 
 Route::controller(ProductoController::class)->group(function(){
-    Route::get('/productos','index');
+    Route::get('/productos/{categoria}','index');
     Route::post('/producto','store');
     Route::get('/producto/{id}','show');
     Route::put('/producto/{id}','update');

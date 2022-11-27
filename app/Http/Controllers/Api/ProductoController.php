@@ -11,10 +11,10 @@ use Symfony\Component\HttpFoundation\Response;
 class ProductoController extends Controller
 {
     
-    public function index()
+    public function index($categoria)
     {
-        $productos = Producto::all();
-        return $productos;
+        $productos = Producto::where('categoria', $categoria) -> get();
+        return response() -> json(['categoria' => $categoria,'productos' => $productos ]);
     }
 
     
