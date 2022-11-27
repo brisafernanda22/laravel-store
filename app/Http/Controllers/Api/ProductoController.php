@@ -39,7 +39,7 @@ class ProductoController extends Controller
     public function show($id)
     {
         $producto = Producto::find($id);
-        return $producto;
+        return response() -> json(['producto' => $producto]);
     }
 
    
