@@ -30,7 +30,7 @@ class ProductoController extends Controller
             $producto->save();
             return response() -> json(["message"=>"Producto guardado"]);
         } catch (\Throwable $th) {
-            return response() -> json(["message"=>"Error inesperado", "Error" => $th], 401);
+            return response() -> json(["message"=>"Error inesperadoss", "Error" => $th, "request" => $request], 401);
         }
 
     }
