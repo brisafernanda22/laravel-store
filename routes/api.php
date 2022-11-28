@@ -3,6 +3,7 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Api\ProductoController;
+use App\Http\Controllers\Api\ReciboController;
 use Symfony\Component\HttpFoundation\Response;
 
 /*
@@ -23,6 +24,10 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::get('/greeting', function () {
     $array = array('hola' => 2, 'test' => 2 );
     return response() -> json($array);
+});
+
+Route::controller(ReciboController::class)->group(function(){
+    Route::post('/recibo','store');
 });
 
 Route::controller(ProductoController::class)->group(function(){

@@ -15,7 +15,7 @@ return new class extends Migration
     {
         Schema::create('recibo', function (Blueprint $table) {
             $table->id();
-            $table->decimal('total', $precision = 2, $scale = 2);
+            $table->decimal('total', $precision = 10, $scale = 2);
             $table->dateTime('registro', $precision = 0);
         });
     }
