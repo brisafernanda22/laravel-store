@@ -18,7 +18,7 @@ class ReciboController extends Controller
 
         try {
             //code...
-            $producto->save();
+            $recibo->save();
             return response() -> json(["message"=>"Recibo guardado"]);
         } catch (\Throwable $th) {
             return response() -> json(["message"=>"Error inesperado", "Error" => $th], 401);
