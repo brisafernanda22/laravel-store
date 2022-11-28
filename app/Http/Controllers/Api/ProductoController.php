@@ -5,15 +5,16 @@ namespace App\Http\Controllers\Api;
 use App\Http\Controllers\Controller;
 use App\Models\Producto;
 use Illuminate\Http\Request;
+use Symfony\Component\HttpFoundation\Response;
 
 
 class ProductoController extends Controller
 {
     
-    public function index()
+    public function index($categoria)
     {
-        $productos = Producto::all();
-        return $productos;
+        $productos = Producto::where('categoria', $categoria) -> get();
+        return response() -> json(['categoria' => $categoria,'productos' => $productos ]);
     }
 
     
@@ -24,14 +25,21 @@ class ProductoController extends Controller
         $producto->precio=$request->precio;
         $producto->categoria=$request->categoria;
         $producto->image=$request->image;
-        $producto->save();
+        try {
+            //code...
+            $producto->save();
+            return response() -> json(["message"=>"Producto guardado"]);
+        } catch (\Throwable $th) {
+            return response() -> json(["message"=>"Error inesperadoss", "Error" => $th, "request" => $request], 401);
+        }
+
     }
 
     
     public function show($id)
     {
         $producto = Producto::find($id);
-        return $producto;
+        return response() -> json(['producto' => $producto]);
     }
 
    
