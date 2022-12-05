@@ -27,7 +27,11 @@ Route::get('/greeting', function () {
 });
 
 Route::controller(ReciboController::class)->group(function(){
+    Route::get('/recibs','index');
     Route::post('/recibo','store');
+    Route::get('/recibo/{id}','show');
+    Route::put('/recibo/{id}','update');
+    Route::delete('/recibo/{id}','destroy');
 });
 
 Route::controller(ProductoController::class)->group(function(){
